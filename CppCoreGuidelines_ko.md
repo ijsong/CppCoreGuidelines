@@ -18724,7 +18724,7 @@ Source file rule summary:
 * [SF.5: A `.cpp` file must include the `.h` file(s) that defines its interface](#Rs-consistency)
 * [SF.6: Use `using namespace` directives for transition, for foundation libraries (such as `std`), or within a local scope (only)](#Rs-using)
 * [SF.7: Don't write `using namespace` at global scope in a header file](#Rs-using-directive)
-* [SF.8: Use `#include` guards for all `.h` files](#Rs-guards)
+* [SF.8: 모든 `.h` 파일들에 `#include` 가드를 사용하라](#Rs-guards)
 * [SF.9: Avoid cyclic dependencies among source files](#Rs-cycles)
 * [SF.10: Avoid dependencies on implicitly `#include`d names](#Rs-implicit)
 * [SF.11: Header files should be self-contained](#Rs-contained)
@@ -19016,15 +19016,15 @@ to name their own UDLs `operator""_x` - they will not collide with the standard 
 
 Flag `using namespace` at global scope in a header file.
 
-### <a name="Rs-guards"></a>SF.8: Use `#include` guards for all `.h` files
+### <a name="Rs-guards"></a>SF.8: 모든 `.h` 파일들에 `#include` 가드를 사용하라
 
 ##### Reason
 
-To avoid files being `#include`d several times.
+파일들이 여러번 `#include` 되지 않도록한다.
 
-In order to avoid include guard collisions, do not just name the guard after the filename.
-Be sure to also include a key and good differentiator, such as the name of library or component
-the header file is part of.
+include 가드 충돌을 피하기 위해, 파일 이름만으로 가드 이름을 지으면 안된다.
+키와 라이브러리 이름이나 헤더 파일이 속한 컴포넌트 이름 같은 좋은 구별자를
+포함하도록 한다.
 
 ##### Example
 
@@ -19040,10 +19040,10 @@ Flag `.h` files without `#include` guards.
 
 ##### Note
 
-Some implementations offer vendor extensions like `#pragma once` as alternative to include guards.
-It is not standard and it is not portable.  It injects the hosting machine's filesystem semantics
-into your program, in addition to locking you down to a vendor.
-Our recommendation is to write in ISO C++: See [rule P.2](#Rp-Cplusplus).
+몇몇 구현들은 `#pragma once`와 같은 벤더 확장을 include 가드의 대안을 제공한다.
+이것은 표준이 아니고 이식성이 없다. 이것은 프로그램에 호스팅 기계의 파일 시스템
+세만틱을 주입하고, 게다가 벤더에 의존하게 된다.
+ISO C++를 따라 작성할 것을 추천한다: See [rule P.2](#Rp-Cplusplus).
 
 ### <a name="Rs-cycles"></a>SF.9: Avoid cyclic dependencies among source files
 
